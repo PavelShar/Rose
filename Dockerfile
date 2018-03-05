@@ -12,22 +12,26 @@ ADD . /.docker
 # Build project
 # Install and configure dependencies
 
+# nvm environment variables
+ENV NVM_DIR /usr/local/nvm
+ENV NODE_VERSION 8.9.4
+
+
 RUN \
     rm /bin/sh && ln -s /bin/bash /bin/sh && \
     sh /.docker/deploy/build/php.sh && \
     sh /.docker/deploy/build/composer.sh && \
-    sh /.docker/deploy/build/nodejs.sh
+    sh /.docker/deploy/build/nodejs.sh && \
+    apt-get -y autoclean
 
 
+# add node and npm to path so the commands are available
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
-CMD  \
-    # Change ssh password
+CMD \
     echo root:${SSH_PASSWORD:-password} | chpasswd && \
-
-    # Start services
     service ssh start && \
     service nginx start && \
     service php7.1-fpm start && \
-
-    # Create daemon
     sh /.docker/deploy/daemon.sh

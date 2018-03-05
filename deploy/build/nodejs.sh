@@ -1,19 +1,12 @@
 #!/bin/bash
 
 
-# nvm environment variables
-NVM_DIR=/usr/local/nvm
-NODE_VERSION=4.4.7
+#apt-get install -y build-essential libssl-dev
+curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.2/install.sh | bash
 
+source \
+    $NVM_DIR/nvm.sh && \
+    nvm install $NODE_VERSION && \
+    nvm alias default $NODE_VERSION && \
+    nvm use default
 
-apt-get install -y build-essential libssl-dev
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.4/install.sh | bash
-
-
-source ~/.nvm/nvm.sh
-
-nvm install --lts
-nvm install-latest-npm
-
-node -v
-npm - v
