@@ -19,10 +19,6 @@ RUN \
     sh /.docker/deploy/build/nodejs.sh
 
 
-# confirm installation
-RUN node -v
-RUN npm -v
-
 
 CMD  \
     # Change ssh password

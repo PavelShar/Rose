@@ -14,3 +14,6 @@ source ~/.nvm/nvm.sh
 
 nvm install --lts
 nvm install-latest-npm
+
+node -v
+npm - v
