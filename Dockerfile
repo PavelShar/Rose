@@ -19,16 +19,6 @@ RUN \
     sh /.docker/deploy/build/nodejs.sh
 
 
-
-
-# install node and npm
-RUN source $NVM_DIR/nvm.sh && nvm install --lts
-
-
-# add node and npm to path so the commands are available
-ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
-
 # confirm installation
 RUN node -v
 RUN npm -v
