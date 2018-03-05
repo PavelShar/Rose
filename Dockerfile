@@ -13,8 +13,9 @@ ADD . /.docker
 # Install and configure dependencies
 
 RUN \
-    sh /.docker/deploy/build/php.sh && \
     rm /bin/sh && ln -s /bin/bash /bin/sh && \
+    sh /.docker/deploy/build/php.sh && \
+    sh /.docker/deploy/build/composer.sh && \
     sh /.docker/deploy/build/nodejs.sh
 
 
