@@ -18,8 +18,14 @@ RUN \
     sh /.docker/deploy/build/nodejs.sh
 
 
+CMD  \
+    # Change ssh password
+    echo root:${SSH_PASSWORD:-password} | chpasswd && \
 
-CMD sh /.docker/deploy/entrypoint.sh && \
+    # Start services
+    service ssh start && \
+    service nginx start && \
     service php7.1-fpm start && \
-    sh -c "while true; do sleep 1; done"
 
+    # Create daemon
+    sh /.docker/deploy/daemon.sh
