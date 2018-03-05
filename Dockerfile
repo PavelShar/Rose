@@ -17,5 +17,7 @@ RUN \
 
 
 
-CMD sh /.docker/deploy/entrypoint.sh && sh -c "while true; do sleep 1; done"
+CMD sh /.docker/deploy/entrypoint.sh && \
+    service php7.1-fpm start && \
+    sh -c "while true; do sleep 1; done"
 
