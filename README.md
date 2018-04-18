@@ -31,6 +31,9 @@ This is an image with `Ubuntu`, `OpenSSH`, `Composer` + `PHP 7.1` and `NodeJS 8.
 #### Composer
 Composer is moved to `bin` directory, so you can use it just as `composer` anywhere inside container
 
+#### NodeJS
+NodeJS and NPM is also installed. Use them as `node` and `npm`
+
 
 #### SSH Connection Settings
 - Default user: `root`
@@ -40,7 +43,7 @@ Composer is moved to `bin` directory, so you can use it just as `composer` anywh
 This image exposes `80` and `22` default ports
 
 #### Running image
-Simple run: `docker run --name cassandra -p 8080:80 -p 8022:22 -d pavelshar/rose:latest`. This command pulls latest image, start container with name `cassandra` and map outter 8080 port to 80 inner image's port and 8022 with 22 accordingly
+Simple run: `docker run --name rose -p 8080:80 -p 8022:22 -d pavelshar/rose:latest`. This command pulls latest image, start container with name `rose` and map outer 8080 port to 80 inner image's port and 8022 with 22 accordingly
 
 You can redefine ssh password using environment variable `SSH_PASSWORD` when creating container - `docker run --name rose -p 8080:80 -p 8022:22 -d -e SSH_PASSWORD=mysshpass pavelshar/rose:latest`
 
