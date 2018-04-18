@@ -29,9 +29,7 @@ RUN \
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
+
 CMD \
-    echo root:${SSH_PASSWORD:-password} | chpasswd && \
-    service ssh start && \
-    service nginx start && \
-    service php7.1-fpm start && \
+    sh /.docker/deploy/init/entrypoint.sh && \
     sh /.docker/deploy/daemon.sh
