@@ -32,4 +32,4 @@ ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 CMD \
     sh /.docker/deploy/init/entrypoint.sh && \
-    sh /.docker/deploy/daemon.sh
+    sh /.docker/deploy/init/daemon.sh
